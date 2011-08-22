@@ -1,0 +1,8 @@
+{
+  "name": "rpbot",
+  "version": "0.0.1",
+  "dependencies": {
+    "ranger": "0.2.4",
+    "github": "0.0.6"
+  }
+}
