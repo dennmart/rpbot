@@ -1,3 +1,8 @@
+if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === undefined || process.env.CAMPFIRE_ROOM === undefined) {
+  console.log("Please set up all Campfire environment variables as specified in the README.");
+  process.exit(0);
+}
+
 var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
 var happyHour = require("./lib/happy_hour.js");
 var rpGithub = require("./lib/repairpal_github.js");
