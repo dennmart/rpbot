@@ -4,9 +4,11 @@ if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === un
 }
 
 var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
-var happyHour = require("./lib/happy_hour.js");
-var rpGithub = require("./lib/repairpal_github.js");
-var misc = require("./lib/miscelaneous.js");
+
+var happyHour = require("./lib/happy_hour.js"),
+    rpGithub = require("./lib/repairpal_github.js"),
+    misc = require("./lib/miscelaneous.js"),
+    weather = require("./lib/weather.js");
 
 client.room(process.env.CAMPFIRE_ROOM, function (room) {
   room.join(function () {
@@ -17,6 +19,9 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           rpGithub.getLastCommitInfo(room);
         } else if (msg.match(/happy hour/i)) {
           happyHour.currentStatus(room);
+        } else if (msg.match(/weather/i)) {
+          var weatherLocation = msg.replace("rpbot weather ", "");
+          weather.currentConditions(weatherLocation, room);
         } else if (msg.match(/commands/i)) {
           room.speak("Here's some of the stuff I do:");
           misc.listCommands(room);
