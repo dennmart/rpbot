@@ -27,7 +27,6 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
             weather.currentConditions(weatherLocation, room);
           }
         } else if (msg.match(/commands/i)) {
-          room.speak("Here's some of the stuff I do:");
           misc.listCommands(room);
           room.speak("Take some time to hack on my code so I can do more awesome stuff!");
         } else {
