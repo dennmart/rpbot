@@ -21,7 +21,11 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           happyHour.currentStatus(room);
         } else if (msg.match(/weather/i)) {
           var weatherLocation = msg.replace("rpbot weather ", "");
-          weather.currentConditions(weatherLocation, room);
+          if (weatherLocation.match(/rpbot weather/i)) {
+            room.speak("Enter a location or zip code to display the current weather conditions (Example: 'rpbot weather Emeryville, CA' or 'rpbot weather 94608')"); 
+          } else {
+            weather.currentConditions(weatherLocation, room);
+          }
         } else if (msg.match(/commands/i)) {
           room.speak("Here's some of the stuff I do:");
           misc.listCommands(room);
