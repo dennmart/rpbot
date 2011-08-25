@@ -34,12 +34,3 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
     });
   });
 });
-
-// Heroku requires something to bind to a port, or else it crashes the app.
-// So we'll create a simple server so that Heroku is happy.
-var http = require('http');
-var port = process.env.PORT || 8124;
-http.createServer(function (request, response) {
-  response.writeHead(200, {'Content-Type': 'text/plain'});
-  response.end('Nothing to see here...\n');
-}).listen(port);
