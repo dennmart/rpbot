@@ -30,7 +30,7 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           misc.listCommands(room);
           room.speak("Take some time to hack on my code so I can do more awesome stuff!");
         } else {
-          room.speak("I don't understand what you want me to do. Here are some of the things I can do:");
+          room.speak("I don't understand what you want me to do. Here are some of the things I can do");
           misc.listCommands(room);
         }
       }
