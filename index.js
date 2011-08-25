@@ -27,7 +27,7 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           } else {
             weather.currentConditions(weatherLocation, room);
           }
-        } else if (msg.match(/build broken/i) {
+        } else if (msg.match(/build broken/i)) {
           hudson.lastBrokenBuild(room);
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
