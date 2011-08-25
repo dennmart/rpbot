@@ -8,7 +8,8 @@ var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.e
 var happyHour = require("./lib/happy_hour.js"),
     rpGithub = require("./lib/repairpal_github.js"),
     misc = require("./lib/miscelaneous.js"),
-    weather = require("./lib/weather.js");
+    weather = require("./lib/weather.js"),
+    hudson = require("./lib/hudson.js");
 
 client.room(process.env.CAMPFIRE_ROOM, function (room) {
   room.join(function () {
@@ -26,6 +27,8 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           } else {
             weather.currentConditions(weatherLocation, room);
           }
+        } else if (msg.match(/build broken/i) {
+          hudson.lastBrokenBuild(room);
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
           room.speak("Take some time to hack on my code so I can do more awesome stuff!");
