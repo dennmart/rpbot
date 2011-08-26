@@ -36,6 +36,8 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           room.speak("I don't understand what you want me to do. Here are some of the things I can do");
           misc.listCommands(room);
         }
+      } else if (message.type === 'TextMessage' && message.body.match(/RepairPal #\d*: FAILURE/i)) {
+        room.play("trombone");
       }
     });
   });
