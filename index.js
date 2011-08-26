@@ -3,6 +3,8 @@ if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === un
   process.exit(0);
 }
 
+require('sugar');
+
 var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
 
 var happyHour = require("./lib/happy_hour.js"),
@@ -29,6 +31,8 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
           }
         } else if (msg.match(/build broken/i)) {
           hudson.lastBrokenBuild(room);
+        } else if (msg.match(/gi joe/i)) {
+          misc.giJoeRandom(room);
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
           room.speak("Take some time to hack on my code so I can do more awesome stuff!");
