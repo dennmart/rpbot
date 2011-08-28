@@ -19,7 +19,7 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
         var msg = message.body.trim();
         if (msg.match(/last commit/i)) {
           var branch = msg.replace("rpbot last commit", "").trim() || "develop";
-          rpGithub.getLastCommitInfo(room, branch);
+          githubInfo.getLastCommitInfo(room, branch);
         } else if (msg.match(/happy hour/i)) {
           happyHour.currentStatus(room);
         } else if (msg.match(/weather/i)) {
