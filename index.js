@@ -3,27 +3,27 @@ if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === un
   process.exit(0);
 }
 
-require('sugar');
-
 var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
-
 var happyHour = require("./lib/happy_hour.js"),
     rpGithub = require("./lib/repairpal_github.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js");
 
+require('sugar');
+
 client.room(process.env.CAMPFIRE_ROOM, function (room) {
   room.join(function () {
     room.listen(function (message) {
       if (message.type === 'TextMessage' && message.body.match(/^rpbot/i)) {
-        var msg = message.body;
+        var msg = message.body.trim();
         if (msg.match(/last commit/i)) {
-          rpGithub.getLastCommitInfo(room);
+          var branch = msg.replace("rpbot last commit", "").trim();
+          rpGithub.getLastCommitInfo(room, branch);
         } else if (msg.match(/happy hour/i)) {
           happyHour.currentStatus(room);
         } else if (msg.match(/weather/i)) {
-          var weatherLocation = msg.replace("rpbot weather ", "");
+          var weatherLocation = msg.replace("rpbot weather", "").trim();
           if (weatherLocation.match(/rpbot weather/i)) {
             room.speak("Enter a location or zip code to display the current weather conditions (Example: 'rpbot weather Emeryville, CA' or 'rpbot weather 94608')"); 
           } else {
