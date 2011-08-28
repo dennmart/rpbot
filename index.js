@@ -5,7 +5,7 @@ if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === un
 
 var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
 var happyHour = require("./lib/happy_hour.js"),
-    rpGithub = require("./lib/repairpal_github.js"),
+    githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js");
