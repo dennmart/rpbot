@@ -9,7 +9,8 @@ var happyHour = require("./lib/happy_hour.js"),
     githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
-    hudson = require("./lib/hudson.js");
+    hudson = require("./lib/hudson.js"),
+    analytics = require("./lib/google_analytics.js");
 
 client.room(process.env.CAMPFIRE_ROOM, function (room) {
   room.join(function () {
@@ -34,6 +35,9 @@ client.room(process.env.CAMPFIRE_ROOM, function (room) {
         // Picks a random video of those hilarious GI Joe PSA parodies and shows one in the Campfire room.
         } else if (msg.match(/gi joe/i)) {
           misc.giJoeRandom(room);
+        // Gets percentage of Internet Explorer 7 usage, according to Google Analytics.
+        } else if (msg.match(/ie7 usage/i)) {
+          analytics.ie7Percentage(room);
         // Shows all the commands available to rpbot.
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
