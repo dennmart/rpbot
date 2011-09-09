@@ -1,18 +1,14 @@
-if (process.env.CAMPFIRE_ACCT === undefined || process.env.CAMPFIRE_TOKEN === undefined || process.env.CAMPFIRE_ROOM === undefined) {
-  console.log("Please set up all Campfire environment variables as specified in the README.");
-  process.exit(0);
-}
-
-require('sugar');
-var client = require("ranger").createClient(process.env.CAMPFIRE_ACCT, process.env.CAMPFIRE_TOKEN);
+var config = require("./config");
+var client = require("ranger").createClient(config.campfire.account, config.campfire.token);
 var happyHour = require("./lib/happy_hour.js"),
     githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js"),
     analytics = require("./lib/google_analytics.js");
+require('sugar');
 
-client.room(process.env.CAMPFIRE_ROOM, function (room) {
+client.room(config.campfire.room_id, function (room) {
   room.join(function () {
     room.listen(function (message) {
       if (message.type === 'TextMessage' && message.body.match(/^rpbot/i)) {
