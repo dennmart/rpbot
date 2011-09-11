@@ -24,4 +24,9 @@ config.pivotal = {};
 config.pivotal.token = ""; // Pivotal Tracker API token
 config.pivotal.project_id = ""; // Project ID you want to get info from (https://www.pivotaltracker.com/projects/<projectid>)
 
+// Lighthouse settings
+config.lighthouse = {};
+config.lighthouse.token = ""; // Lighthouse Token (generated from your user profile)
+config.lighthouse.project_id = ""; // Project ID you want to get info from (https://something.lighthouseapp.com/projects/<projectid>)
+
 module.exports = config;

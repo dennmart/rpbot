@@ -6,7 +6,8 @@ var happyHour = require("./lib/happy_hour.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js"),
     analytics = require("./lib/google_analytics.js"),
-    pivotal = require("./lib/pivotal.js");
+    pivotal = require("./lib/pivotal.js"),
+    lighthouse = require("./lib/lighthouse.js");
 require('sugar');
 
 client.room(config.campfire.room_id, function (room) {
@@ -38,6 +39,9 @@ client.room(config.campfire.room_id, function (room) {
         // Displays information about the current iteration from Pivotal Tracker.
         } else if (msg.match(/pivotal current/i)) {
           pivotal.currentIteration(room);
+        // Displays ticket information for current milestone from Lighthouse.
+        } else if (msg.match(/lighthouse tickets/i)) {
+          lighthouse.currentMilestone(room);
         // Shows all the commands available to rpbot.
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
