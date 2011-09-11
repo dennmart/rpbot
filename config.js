@@ -19,4 +19,9 @@ config.google.email = ""; // Email address used for Google Analytics login
 config.google.password = ""; // Password for logging in to Google Analytics
 config.google.profile_id = ""; // Profile ID of the website profile you want to fetch info from
 
+// Pivotal Tracker settings
+config.pivotal = {};
+config.pivotal.token = ""; // Pivotal Tracker API token
+config.pivotal.project_id = ""; // Project ID you want to get info from (https://www.pivotaltracker.com/projects/<projectid>)
+
 module.exports = config;
