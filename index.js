@@ -5,7 +5,7 @@ var happyHour = require("./lib/happy_hour.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js"),
-    analytics = require("./lib/google_analytics.js"),
+    google = require("./lib/google.js"),
     pivotal = require("./lib/pivotal.js"),
     lighthouse = require("./lib/lighthouse.js");
 require('sugar');
@@ -35,13 +35,17 @@ client.room(config.campfire.room_id, function (room) {
           misc.giJoeRandom(room);
         // Gets percentage of Internet Explorer 7 usage, according to Google Analytics.
         } else if (msg.match(/ie7 usage/i)) {
-          analytics.ie7Percentage(room);
+          google.ie7Percentage(room);
         // Displays information about the current iteration from Pivotal Tracker.
         } else if (msg.match(/pivotal current/i)) {
           pivotal.currentIteration(room);
         // Displays ticket information for current milestone from Lighthouse.
         } else if (msg.match(/lighthouse tickets/i)) {
           lighthouse.currentMilestone(room);
+        // Fetches the first result from YouTube.
+        } else if (msg.match(/youtube/i)) {
+          var query = msg.replace("rpbot youtube", "").trim();
+          google.youTubeVideo(query, room);
         // Shows all the commands available to rpbot.
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
