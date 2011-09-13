@@ -13,7 +13,7 @@ config.github.token = ""; // GitHub API token for the account specified above
 config.github.repo_user = ""; // GitHub account name of the owner for the repository you want to get info from (http://github.com/<accountname>/<repository>)
 config.github.repo = ""; // Name of the repository (http://github.com/<accountname>/<repository>)
 
-// Google Analytics settings
+// Google Data API settings
 config.google = {};
 config.google.email = ""; // Email address used for Google Analytics login
 config.google.password = ""; // Password for logging in to Google Analytics
