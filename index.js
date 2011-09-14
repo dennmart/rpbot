@@ -13,6 +13,7 @@ require('sugar');
 client.room(config.campfire.room_id, function (room) {
   room.join(function () {
     room.listen(function (message) {
+      // TODO: Find an easier way to deal with this before it gets unwieldy...
       if (message.type === 'TextMessage' && message.body.match(/^rpbot/i)) {
         var msg = message.body.trim();
         
@@ -46,6 +47,10 @@ client.room(config.campfire.room_id, function (room) {
         } else if (msg.match(/youtube/i)) {
           var query = msg.replace("rpbot youtube", "").trim();
           google.youTubeVideo(query, room);
+        // Fetches and uploads a random image result from Google Images.
+        } else if (msg.match(/image/i)) {
+          var query = msg.replace("rpbot image", "").trim();
+          google.googleImage(query, room);
         // Shows all the commands available to rpbot.
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
