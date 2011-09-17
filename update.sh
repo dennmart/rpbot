@@ -24,7 +24,7 @@ echo "Setting config.js..."
 cp config.js.default config.js
 
 # Restart the app using Forever
-echo "Restarting rpbot..."w
+echo "Restarting rpbot..."
 forever restart index.js
 
 # Cleanup
