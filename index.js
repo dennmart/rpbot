@@ -51,6 +51,9 @@ client.room(config.campfire.room_id, function (room) {
         } else if (msg.match(/image/i)) {
           var query = msg.replace("rpbot image", "").trim();
           google.googleImage(query, room);
+        // Get some sax in your life!
+        } else if (msg.match(/sax/i)) {
+          misc.sax(room)
         // Shows all the commands available to rpbot.
         } else if (msg.match(/commands/i)) {
           misc.listCommands(room);
