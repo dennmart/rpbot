@@ -2,9 +2,9 @@
   "name": "rpbot",
   "version": "0.0.1",
   "dependencies": {
-    "ranger": "0.2.4",
+    "campfire": "0.1.1",
     "github": "0.0.6",
     "xml2js": "0.1.9",
-    "sugar": "0.9.4"
+    "sugar": "1.2.5"
   }
 }
