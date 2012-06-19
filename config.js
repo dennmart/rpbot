@@ -9,6 +9,7 @@ config.campfire.room_id = ""; // Campfire Room ID you want the bot to connect to
 // GitHub settings
 config.github = {};
 config.github.user = ""; // GitHub account name used for API access
+config.github.password = ""; // GitHub account password used for API access
 config.github.token = ""; // GitHub API token for the account specified above
 config.github.repo_user = ""; // GitHub account name of the owner for the repository you want to get info from (http://github.com/<accountname>/<repository>)
 config.github.repo = ""; // Name of the repository (http://github.com/<accountname>/<repository>)
