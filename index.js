@@ -1,7 +1,7 @@
 var config = require("./config");
 var campfire = require("campfire").Campfire;
 var happyHour = require("./lib/happy_hour.js"),
-    githubInfo = require("./lib/github_info.js"),
+    //githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js"),
@@ -22,11 +22,13 @@ instance.join(config.campfire.room_id, function(error, room) {
     if (message.type === 'TextMessage' && message.body.match(/^rpbot/i)) {
       var msg = message.body.trim();
       // GitHub - Information about last commit for specfied branch (or 'develop' branch, by default).
-      if (msg.match(/last commit/i)) {
-        var branch = msg.replace("rpbot last commit", "").trim() || "develop";
-        githubInfo.getLastCommitInfo(room, branch);
+      // TODO: Disabling for now until I implement OAuth authentication.
+      //if (msg.match(/last commit/i)) {
+      //  var branch = msg.replace("rpbot last commit", "").trim() || "develop";
+      //  githubInfo.getLastCommitInfo(room, branch);
       // Simply mentions if it's Happy Hour at our local bar.
-      } else if (msg.match(/happy hour/i)) {
+      //} else if (msg.match(/happy hour/i)) {
+      if (msg.match(/happy hour/i)) {
         happyHour.currentStatus(room);
       // Shows the current weather conditions for the specified location (or our local weather).
       } else if (msg.match(/weather/i)) {
