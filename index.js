@@ -21,7 +21,6 @@ instance.join(config.campfire.room_id, function(error, room) {
     // TODO: Find an easier way to deal with this before it gets unwieldy...
     if (message.type === 'TextMessage' && message.body.match(/^rpbot/i)) {
       var msg = message.body.trim();
-        
       // GitHub - Information about last commit for specfied branch (or 'develop' branch, by default).
       if (msg.match(/last commit/i)) {
         var branch = msg.replace("rpbot last commit", "").trim() || "develop";
