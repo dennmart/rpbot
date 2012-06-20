@@ -52,12 +52,16 @@ instance.join(config.campfire.room_id, function(error, room) {
         var query = msg.replace("rpbot youtube", "").trim();
         google.youTubeVideo(query, room);
       // Fetches and uploads a random image result from Google Images.
-      } else if (msg.match(/image/i)) {
+      } else if (msg.match(/^rpbot image/i)) { // TODO: Fix this...
         var query = msg.replace("rpbot image", "").trim();
         google.googleImage(query, room);
       // Get some sax in your life!
       } else if (msg.match(/sax/i)) {
         misc.sax(room)
+      // Because we all need some Mustachify in our lives.
+      } else if (msg.match(/mustachify/i)) {
+        var imageUrl = msg.replace("rpbot mustachify", "").trim();
+        misc.mustachify(imageUrl, room);
       // Shows all the commands available to rpbot.
       } else if (msg.match(/commands/i)) {
         misc.listCommands(room);
