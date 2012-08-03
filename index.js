@@ -1,6 +1,7 @@
 var config = require("./config");
 var campfire = require("campfire").Campfire;
 var happyHour = require("./lib/happy_hour.js"),
+    chuckFact = require("./lib/chuck_fact.js"),
     githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
@@ -28,6 +29,9 @@ instance.join(config.campfire.room_id, function(error, room) {
       // Simply mentions if it's Happy Hour at our local bar.
       } else if (msg.match(/happy hour/i)) {
         happyHour.currentStatus(room);
+      // Chuck Norris facts
+      } else if (msg.match(/chuck fact/i)) {
+        chuckFact.randomJoke(room);
       // Shows the current weather conditions for the specified location (or our local weather).
       } else if (msg.match(/weather/i)) {
         var weatherLocation = msg.replace("rpbot weather", "").trim() || "94608";
