@@ -28,6 +28,9 @@ instance.join(config.campfire.room_id, function(error, room) {
       // Simply mentions if it's Happy Hour at our local bar.
       } else if (msg.match(/happy hour/i)) {
         happyHour.currentStatus(room);
+      // Chuck Norris facts
+      } else if (msg.match(/chuck fact/i)) {
+        happyHour.chuckFact(room);
       // Shows the current weather conditions for the specified location (or our local weather).
       } else if (msg.match(/weather/i)) {
         var weatherLocation = msg.replace("rpbot weather", "").trim() || "94608";
