@@ -1,13 +1,11 @@
 var config = require("./config");
 var campfire = require("campfire").Campfire;
-var happyHour = require("./lib/happy_hour.js"),
-    chuckFact = require("./lib/chuck_fact.js"),
+var chuckFact = require("./lib/chuck_fact.js"),
     githubInfo = require("./lib/github_info.js"),
     misc = require("./lib/miscelaneous.js"),
     weather = require("./lib/weather.js"),
     hudson = require("./lib/hudson.js"),
     google = require("./lib/google.js"),
-    pivotal = require("./lib/pivotal.js"),
     lighthouse = require("./lib/lighthouse.js");
 require("sugar");
 
@@ -26,9 +24,6 @@ instance.join(config.campfire.room_id, function(error, room) {
       if (msg.match(/last commit/i)) {
        var branch = msg.replace("rpbot last commit", "").trim() || "develop";
        githubInfo.getLastCommitInfo(room, branch);
-      // Simply mentions if it's Happy Hour at our local bar.
-      } else if (msg.match(/happy hour/i)) {
-        happyHour.currentStatus(room);
       // Chuck Norris facts
       } else if (msg.match(/chuck fact/i)) {
         chuckFact.randomJoke(room);
@@ -45,9 +40,6 @@ instance.join(config.campfire.room_id, function(error, room) {
       // Gets percentage of Internet Explorer 7 usage, according to Google Analytics.
       } else if (msg.match(/ie7 usage/i)) {
         google.ie7Percentage(room);
-      // Displays information about the current iteration from Pivotal Tracker.
-      } else if (msg.match(/pivotal current/i)) {
-        pivotal.currentIteration(room);
       // Displays ticket information for current milestone from Lighthouse.
       } else if (msg.match(/lighthouse tickets/i)) {
         lighthouse.currentMilestone(room);
