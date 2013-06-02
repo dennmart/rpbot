@@ -29,7 +29,7 @@ instance.join(config.campfire.room_id, function(error, room) {
         chuckFact.randomJoke(room);
       // Shows the current weather conditions for the specified location (or our local weather).
       } else if (msg.match(/weather/i)) {
-        var weatherLocation = msg.replace("rpbot weather", "").trim() || "94608";
+        var weatherLocation = msg.replace("rpbot weather", "").trim() || "94107";
         weather.currentConditions(weatherLocation, room);
       // Checks the last time the build was broken in our local instance of Hudson.
       } else if (msg.match(/build broken/i)) {
